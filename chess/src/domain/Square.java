@@ -5,15 +5,14 @@ import domain.enums.Color;
 public class Square {
 
     private Position position;
-    private Piece piece;
+    public Piece piece;
     private final Color color;
 
 
-    public Square(int row, int column, Piece piece, Color color) {
-        this.position.setRow(row);
-        this.position.setColumn(column);
-        this.piece = piece;
+    public Square(Color color, int row, int column, Piece piece) {
         this.color = color;
+        this.position = new Position(row, column);
+        this.piece = piece;
     }
 
     public boolean isEmpty(){

@@ -4,10 +4,9 @@ public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Chess");
 
-        //creating board
-
         Board board = new Board();
-        board.setInitialBoard();
+        board.createBoard();
+        board.initializePieces();
         board.printBoard();
         
     }

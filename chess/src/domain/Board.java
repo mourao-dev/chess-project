@@ -4,46 +4,63 @@ import domain.enums.Color;
 import domain.enums.Notation;
 
 public class Board {
-    private static final int HEIGHT = 8;
-    private static final int WIDTH = 8;
 
-    private Piece[][] pieces;
+    private Square[][] squares;
 
     public Board() {
-        this.pieces = new Piece[HEIGHT][WIDTH];
+        this.squares = new Square[8][8];
     }
 
-    public void setInitialBoard() {
-        pieces[0][0] = new Piece(Color.BLACK, 0, 0, Notation.ROOK);
-        pieces[0][1] = new Piece(Color.BLACK,0, 1,Notation.KNIGHT);
-        pieces[0][2] = new Piece(Color.BLACK,0, 2,Notation.BISHOP);
-        pieces[0][3] = new Piece(Color.BLACK,0, 3,Notation.QUEEN);
-        pieces[0][4] = new Piece(Color.BLACK,0, 4,Notation.KING);
-        pieces[0][5] = new Piece(Color.BLACK,0, 5,Notation.BISHOP);
-        pieces[0][6] = new Piece(Color.BLACK,0, 6,Notation.KNIGHT);
-        pieces[0][7] = new Piece(Color.BLACK, 0, 7, Notation.ROOK);
+    public void createNullBoard(){
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                squares[i][j] = new Square(null, i, j, null);
+            }
+        }
+    }
 
-        pieces[7][0] = new Piece(Color.WHITE, 0, 0, Notation.ROOK);
-        pieces[7][1] = new Piece(Color.WHITE,0, 1,Notation.KNIGHT);
-        pieces[7][2] = new Piece(Color.WHITE,0, 2,Notation.BISHOP);
-        pieces[7][3] = new Piece(Color.WHITE,0, 3,Notation.QUEEN);
-        pieces[7][4] = new Piece(Color.WHITE,0, 4,Notation.KING);
-        pieces[7][5] = new Piece(Color.WHITE,0, 5,Notation.BISHOP);
-        pieces[7][6] = new Piece(Color.WHITE,0, 6,Notation.KNIGHT);
-        pieces[7][7] = new Piece(Color.WHITE, 0, 7, Notation.ROOK);
+    public void createBoard() {
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                if (i % 2 == 0){
+                    squares[i][j] = new Square(Color.WHITE, i, j, null);
+                }
+                squares[i][j] = new Square(Color.BLACK, i, j, null);
+            }
+        }
+    }
+
+        public void initializePieces() {
+        squares[0][0].setPiece(new Piece(Color.BLACK, 0, 0, Notation.ROOK));
+        squares[0][1].setPiece(new Piece(Color.BLACK, 0, 1, Notation.KNIGHT));
+        squares[0][2].setPiece(new Piece(Color.BLACK, 0, 2, Notation.BISHOP));
+        squares[0][3].setPiece(new Piece(Color.BLACK, 0, 3, Notation.QUEEN));
+        squares[0][4].setPiece(new Piece(Color.BLACK, 0, 4, Notation.KING));
+        squares[0][5].setPiece(new Piece(Color.BLACK, 0, 5, Notation.BISHOP));
+        squares[0][6].setPiece(new Piece(Color.BLACK, 0, 6, Notation.KNIGHT));
+        squares[0][7].setPiece(new Piece(Color.BLACK, 0, 7, Notation.ROOK));
+        
+        squares[7][0].setPiece(new Piece(Color.WHITE, 0, 0, Notation.ROOK));
+        squares[7][1].setPiece(new Piece(Color.WHITE, 0, 1, Notation.KNIGHT));
+        squares[7][2].setPiece(new Piece(Color.WHITE, 0, 2, Notation.BISHOP));
+        squares[7][3].setPiece(new Piece(Color.WHITE, 0, 3, Notation.QUEEN));
+        squares[7][4].setPiece(new Piece(Color.WHITE, 0, 4, Notation.KING));
+        squares[7][5].setPiece(new Piece(Color.WHITE, 0, 5, Notation.BISHOP));
+        squares[7][6].setPiece(new Piece(Color.WHITE, 0, 6, Notation.KNIGHT));
+        squares[7][7].setPiece(new Piece(Color.WHITE, 0, 7, Notation.ROOK));
     
         for (int i = 0; i < 8; i++) {
-        pieces[1][i] = new Piece(Color.BLACK, 1, i, Notation.POWN);
-        pieces[6][i] = new Piece(Color.WHITE, 6, i, Notation.POWN);
+        squares[1][i].setPiece(new Piece(Color.BLACK, 1, i, Notation.POWN));
+        squares[6][i].setPiece(new Piece(Color.WHITE, 6, i, Notation.POWN));
     }
 }
 
     public Piece getPiece(Position position) {
-        return pieces[position.getColumn()][position.getRow()];
+        return squares[position.getColumn()][position.getRow()].piece;
     }
 
     public boolean isValidPosition(Position position){
-        if (position.getColumn() > Board.HEIGHT || position.getColumn() < 0 || position.getRow() > Board.WIDTH || position.getRow() < 0){
+        if (position.getColumn() > 8 || position.getColumn() < 0 || position.getRow() > 8 || position.getRow() < 0){
             return false;
         }
 
@@ -64,13 +81,13 @@ public class Board {
         for (int i = 0; i < 8; i++){
             System.out.print("\n");
             for (int j = 0; j < 8; j++){
-                if (pieces[i][j] == null) System.err.print("[ ]");
+                if (squares[i][j].piece == null) System.err.print("[ ]");
                 else{
-                    if (pieces[i][j].getColor() == Color.BLACK){
-                    System.out.print(ANSI_YELLOW + "[" + pieces[i][j].getPieceNotation() + "]" + ANSI_RESET);       
+                    if (squares[i][j].piece.getColor() == Color.BLACK){
+                    System.out.print(ANSI_YELLOW + "[" + squares[i][j].piece.getPieceNotation() + "]" + ANSI_RESET);       
                     }
                     else{
-                        System.out.print("[" + pieces[i][j].getPieceNotation() + "]");
+                        System.out.print("[" + squares[i][j].piece.getPieceNotation() + "]");
                     }
                 }
                     
