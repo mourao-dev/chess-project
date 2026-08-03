@@ -69,6 +69,13 @@ public class Board {
         return squares[position.getColumn()][position.getRow()].piece;
     }
 
+    public void addPiece(Piece piece) {
+        Position position = piece.getPosition();
+        if (!positionHasPiece(position) && isValidPosition(position)) {
+            squares[position.getRow()][position.getColumn()].piece = piece;
+        }
+    }
+
     public boolean isValidPosition(Position position) {
         if (position.getColumn() > 7 || position.getColumn() < 0 || position.getRow() > 7 || position.getRow() < 0) {
             return false;
