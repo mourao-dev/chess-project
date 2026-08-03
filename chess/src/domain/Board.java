@@ -70,7 +70,7 @@ public class Board {
     }
 
     public boolean isValidPosition(Position position) {
-        if (position.getColumn() > 8 || position.getColumn() < 0 || position.getRow() > 8 || position.getRow() < 0) {
+        if (position.getColumn() > 7 || position.getColumn() < 0 || position.getRow() > 7 || position.getRow() < 0) {
             return false;
         }
 
