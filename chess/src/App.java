@@ -6,8 +6,9 @@ public class App {
 
         Board board = new Board();
         board.createBoard();
-        board.initializePieces();
         board.printBoard();
+        board.initializePieces();
+        board.printBoardWithPieces();
         
     }
 }
