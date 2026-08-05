@@ -2,17 +2,20 @@ package domain;
 
 import domain.enums.Color;
 import domain.enums.Notation;
+import domain.pieces.strategies.MoveStrategy;
 
-public class Piece {
+public abstract class Piece {
 
-    private final Color color;
-    private final Notation notation;
-    private Position position;
+    protected final Color color;
+    protected final Notation notation;
+    protected Position position;
+    protected MoveStrategy moveStrategy;
     
-    public Piece(Color color, int row, int column, Notation notation) {
+    public Piece(Color color, Position position, Notation notation, MoveStrategy moveStrategy) {
         this.color = color;
-        this.position = new Position(row, column);
+        this.position = position;
         this.notation = notation;
+        this.moveStrategy = moveStrategy;
     }
 
     public Color getColor() {
@@ -27,11 +30,13 @@ public class Piece {
         this.position = position;
     }
 
-    public Notation getPieceName() {
-        return notation;
-    }
-
     public String getPieceNotation(){
         return notation.getNotation();
+    }
+
+    public void moveTo(Position goal) {
+        if (moveStrategy.canMove(goal)) {
+            this.position = goal;
+        }
     }
 }

@@ -2,6 +2,8 @@ package domain;
 
 import domain.enums.Color;
 import domain.enums.Notation;
+import domain.pieces.Pawn;
+import domain.pieces.strategies.PawnMoveStrategy;
 
 public class Board {
 
@@ -41,27 +43,27 @@ public class Board {
     }
 
     public void initializePieces() {
-        squares[0][0].setPiece(new Piece(Color.BLACK, 0, 0, Notation.ROOK));
-        squares[0][1].setPiece(new Piece(Color.BLACK, 0, 1, Notation.KNIGHT));
-        squares[0][2].setPiece(new Piece(Color.BLACK, 0, 2, Notation.BISHOP));
-        squares[0][3].setPiece(new Piece(Color.BLACK, 0, 3, Notation.QUEEN));
-        squares[0][4].setPiece(new Piece(Color.BLACK, 0, 4, Notation.KING));
-        squares[0][5].setPiece(new Piece(Color.BLACK, 0, 5, Notation.BISHOP));
-        squares[0][6].setPiece(new Piece(Color.BLACK, 0, 6, Notation.KNIGHT));
-        squares[0][7].setPiece(new Piece(Color.BLACK, 0, 7, Notation.ROOK));
+        // squares[0][0].setPiece(new Piece(Color.BLACK, 0, 0, Notation.ROOK));
+        // squares[0][1].setPiece(new Piece(Color.BLACK, 0, 1, Notation.KNIGHT));
+        // squares[0][2].setPiece(new Piece(Color.BLACK, 0, 2, Notation.BISHOP));
+        // squares[0][3].setPiece(new Piece(Color.BLACK, 0, 3, Notation.QUEEN));
+        // squares[0][4].setPiece(new Piece(Color.BLACK, 0, 4, Notation.KING));
+        // squares[0][5].setPiece(new Piece(Color.BLACK, 0, 5, Notation.BISHOP));
+        // squares[0][6].setPiece(new Piece(Color.BLACK, 0, 6, Notation.KNIGHT));
+        // squares[0][7].setPiece(new Piece(Color.BLACK, 0, 7, Notation.ROOK));
 
-        squares[7][0].setPiece(new Piece(Color.WHITE, 0, 0, Notation.ROOK));
-        squares[7][1].setPiece(new Piece(Color.WHITE, 0, 1, Notation.KNIGHT));
-        squares[7][2].setPiece(new Piece(Color.WHITE, 0, 2, Notation.BISHOP));
-        squares[7][3].setPiece(new Piece(Color.WHITE, 0, 3, Notation.QUEEN));
-        squares[7][4].setPiece(new Piece(Color.WHITE, 0, 4, Notation.KING));
-        squares[7][5].setPiece(new Piece(Color.WHITE, 0, 5, Notation.BISHOP));
-        squares[7][6].setPiece(new Piece(Color.WHITE, 0, 6, Notation.KNIGHT));
-        squares[7][7].setPiece(new Piece(Color.WHITE, 0, 7, Notation.ROOK));
+        // squares[7][0].setPiece(new Piece(Color.WHITE, 0, 0, Notation.ROOK));
+        // squares[7][1].setPiece(new Piece(Color.WHITE, 0, 1, Notation.KNIGHT));
+        // squares[7][2].setPiece(new Piece(Color.WHITE, 0, 2, Notation.BISHOP));
+        // squares[7][3].setPiece(new Piece(Color.WHITE, 0, 3, Notation.QUEEN));
+        // squares[7][4].setPiece(new Piece(Color.WHITE, 0, 4, Notation.KING));
+        // squares[7][5].setPiece(new Piece(Color.WHITE, 0, 5, Notation.BISHOP));
+        // squares[7][6].setPiece(new Piece(Color.WHITE, 0, 6, Notation.KNIGHT));
+        // squares[7][7].setPiece(new Piece(Color.WHITE, 0, 7, Notation.ROOK));
 
         for (int i = 0; i < 8; i++) {
-            squares[1][i].setPiece(new Piece(Color.BLACK, 1, i, Notation.POWN));
-            squares[6][i].setPiece(new Piece(Color.WHITE, 6, i, Notation.POWN));
+            squares[1][i].setPiece(new Pawn(Color.BLACK, new Position(1, i)));
+            squares[6][i].setPiece(new Pawn(Color.WHITE, new Position(6, i)));
         }
     }
 

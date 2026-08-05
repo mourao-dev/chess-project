@@ -1,7 +1,7 @@
 package domain.enums;
 
  public enum Notation{
-        POWN("P"),
+        PAWN("P"),
         ROOK("R"),
         KNIGHT("N"),
         BISHOP("B"),
