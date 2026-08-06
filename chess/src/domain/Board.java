@@ -3,7 +3,6 @@ package domain;
 import domain.enums.Color;
 import domain.enums.Notation;
 import domain.pieces.Pawn;
-import domain.pieces.strategies.PawnMoveStrategy;
 
 public class Board {
 
