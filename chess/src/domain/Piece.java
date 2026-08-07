@@ -7,11 +7,13 @@ public abstract class Piece {
 
     protected final Color color;
     protected final Notation notation;
-    protected Position position;    
-    public Piece(Color color, Position position, Notation notation) {
+    protected Position position;   
+    protected Board board; 
+    public Piece(Color color, Position position, Notation notation, Board board) {
         this.color = color;
         this.position = position;
         this.notation = notation;
+        this.board = board;
     }
 
     public Color getColor() {

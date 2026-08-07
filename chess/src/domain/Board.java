@@ -61,8 +61,8 @@ public class Board {
         // squares[7][7].setPiece(new Piece(Color.WHITE, 0, 7, Notation.ROOK));
 
         for (int i = 0; i < 8; i++) {
-            squares[1][i].setPiece(new Pawn(Color.BLACK, new Position(1, i)));
-            squares[6][i].setPiece(new Pawn(Color.WHITE, new Position(6, i)));
+            //squares[1][i].setPiece(new Pawn(Color.BLACK, new Position(1, i)));
+            //squares[6][i].setPiece(new Pawn(Color.WHITE, new Position(6, i)));
         }
     }
 
@@ -90,6 +90,10 @@ public class Board {
             return false;
         }
         return true;
+    }
+
+    public Square[][] getSquares(){
+        return squares;
     }
 
     public static final String ANSI_YELLOW = "\u001B[33m";
