@@ -42,6 +42,24 @@ public class Pawn extends Piece {
             }
 
         }
+        if (color.getColor() == Color.WHITE.getColor()) {
+            if (numberOfPlays == 0) {
+                if (squaresMoves == 1) {
+                    if (position.getColumn() == goal.getColumn() && position.getRow() - 1 == goal.getRow()
+                            && board.getSquares()[goal.getRow()][goal.getColumn()].isEmpty()) {
+                        return true;
+                    }
+                } 
+                if (squaresMoves == 2) {
+                    if (position.getColumn() == goal.getColumn() && position.getRow() - 2 == goal.getRow()
+                            && board.getSquares()[goal.getRow()][goal.getColumn()].isEmpty()
+                            && board.getSquares()[goal.getRow() + 1][goal.getColumn()].isEmpty()) {
+                        return true;
+                    }
+                }
+            }
+
+        }
         return false;
     }
 
